@@ -1,449 +1,341 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>早稲田ジュニア - WASEDA Jr. Baseball Club</title>
+    <title>早稻田少年棒球队 - Waseda Junior</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* 主题色：早稻田枣红色 #881C28 + 白色。简洁大气，松弛留白风格 */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #fafafa; 
+            color: #333; 
+            line-height: 1.8; 
+            font-size: 16px;
         }
-
-        :root {
-            --waseda-maroon: #6B1C23;
-            --waseda-maroon-light: #8B2C33;
-            --waseda-maroon-dark: #4B0C13;
+        header { 
+            background-color: #881C28; 
+            color: white; 
+            text-align: center; 
+            padding: 60px 20px; 
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        header h1 { 
+            font-size: 36px; 
+            margin: 0 0 10px 0; 
+            letter-spacing: 2px; 
         }
-
-        header {
-            background: linear-gradient(135deg, var(--waseda-maroon-dark) 0%, var(--waseda-maroon) 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        header p { 
+            font-size: 20px; 
+            margin: 0; 
+            opacity: 0.9; 
         }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        nav { 
+            background-color: #881C28; 
+            padding: 0; 
         }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        nav ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
-
-        nav {
-            background: var(--waseda-maroon);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        nav li { 
+            margin: 0; 
         }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 18px; 
+            padding: 15px 25px; 
+            display: block; 
+            transition: background-color 0.3s ease; 
         }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background 0.3s;
+        nav a:hover { 
+            background-color: rgba(255,255,255,0.1); 
         }
-
-        nav a:hover {
-            background: rgba(255,255,255,0.2);
+        section { 
+            padding: 80px 20px; 
+            max-width: 1000px; 
+            margin: 0 auto; 
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+        h1, h2 { 
+            font-size: 32px; 
+            color: #881C28; 
+            text-align: center; 
+            margin-bottom: 40px; 
+            letter-spacing: 1px; 
         }
-
-        section {
-            margin-bottom: 4rem;
+        h3 { 
+            font-size: 24px; 
+            color: #881C28; 
+            margin-bottom: 20px; 
         }
-
-        h2 {
-            color: var(--waseda-maroon);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--waseda-maroon);
+        .team-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 40px; 
+            margin-top: 40px; 
         }
-
-        .hero {
-            background: linear-gradient(rgba(107,28,35,0.8), rgba(75,12,19,0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%236B1C23" width="1200" height="600"/><circle fill="%238B2C33" cx="200" cy="150" r="80"/><circle fill="%238B2C33" cx="600" cy="400" r="100"/><circle fill="%238B2C33" cx="1000" cy="200" r="60"/></svg>');
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            background-size: cover;
+        .team-card { 
+            text-align: center; 
+            background: white; 
+            padding: 30px 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease; 
         }
-
-        .hero h2 {
-            color: white;
-            border: none;
-            font-size: 2.5rem;
+        .team-card:hover { 
+            transform: translateY(-5px); 
         }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-top: 1rem;
+        .team-card img { 
+            width: 100%; 
+            height: 180px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            margin-bottom: 15px; 
         }
-
-        .history-content {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            line-height: 1.8;
+        .honors-list { 
+            list-style: none; 
+            padding: 0; 
+            max-width: 600px; 
+            margin: 0 auto; 
         }
-
-        .history-content h3 {
-            color: var(--waseda-maroon);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
+        .honors-list li { 
+            background: white; 
+            margin: 20px 0; 
+            padding: 25px; 
+            border-radius: 8px; 
+            font-size: 20px; 
+            text-align: center; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+            border-left: 4px solid #881C28; 
         }
-
-        .history-content h3:first-child {
-            margin-top: 0;
+        .timeline { 
+            position: relative; 
+            max-width: 800px; 
+            margin: 0 auto; 
         }
-
-        .honors {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        .timeline::after { 
+            content: ''; 
+            position: absolute; 
+            width: 4px; 
+            background-color: #881C28; 
+            top: 0; 
+            bottom: 0; 
+            left: 50%; 
+            margin-left: -2px; 
         }
-
-        .honor-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--waseda-maroon);
+        .timeline-item { 
+            padding: 20px 40px; 
+            position: relative; 
+            background-color: inherit; 
+            width: 50%; 
         }
-
-        .honor-card h3 {
-            color: var(--waseda-maroon);
-            margin-bottom: 0.5rem;
+        .timeline-item::after { 
+            content: ''; 
+            position: absolute; 
+            width: 20px; 
+            height: 20px; 
+            right: -13px; 
+            background-color: white; 
+            border: 4px solid #881C28; 
+            top: 25px; 
+            border-radius: 50%; 
+            z-index: 1; 
         }
-
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -12px; }
+        .timeline-content { 
+            padding: 25px 30px; 
+            background-color: white; 
+            position: relative; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
         }
-
-        .photo-placeholder {
-            background: linear-gradient(135deg, var(--waseda-maroon) 0%, var(--waseda-maroon-light) 100%);
-            height: 200px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            cursor: pointer;
-            transition: transform 0.3s;
+        form { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
         }
-
-        .photo-placeholder:hover {
-            transform: scale(1.05);
+        input, textarea, button { 
+            width: 100%; 
+            padding: 15px; 
+            margin: 15px 0; 
+            font-size: 16px; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            box-sizing: border-box; 
         }
-
-        .recruitment {
-            background: linear-gradient(135deg, var(--waseda-maroon-dark) 0%, var(--waseda-maroon) 100%);
-            color: white;
-            padding: 3rem;
-            border-radius: 10px;
-            text-align: center;
+        button { 
+            background-color: #881C28; 
+            color: white; 
+            cursor: pointer; 
+            border: none; 
+            font-weight: bold; 
+            transition: background-color 0.3s ease; 
         }
-
-        .recruitment h2 {
-            color: white;
-            border: none;
+        button:hover { 
+            background-color: #6a151f; 
         }
-
-        .recruitment-info {
-            background: rgba(255,255,255,0.2);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 1.5rem;
-            text-align: left;
+        .contact-list { 
+            text-align: center; 
+            font-size: 18px; 
+            list-style: none; 
+            padding: 0; 
+            max-width: 400px; 
+            margin: 0 auto; 
         }
-
-        .recruitment-info h3 {
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
+        .contact-list li { 
+            margin: 20px 0; 
+            padding: 15px; 
+            background: white; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
         }
-
-        .contact {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
+        .contact-list a { 
+            color: #881C28; 
+            text-decoration: none; 
+            font-weight: bold; 
         }
-
-        .contact-info {
-            font-size: 1.1rem;
-            line-height: 2;
+        footer { 
+            background-color: #881C28; 
+            color: white; 
+            text-align: center; 
+            padding: 30px; 
+            margin-top: 80px; 
+            font-size: 14px; 
+            opacity: 0.9; 
         }
-
-        .contact-info a {
-            color: var(--waseda-maroon);
-            text-decoration: none;
-            font-weight: bold;
+        img { 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
         }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background: var(--waseda-maroon-dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: white;
-            color: var(--waseda-maroon);
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: transform 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            nav a {
-                font-size: 0.9rem;
-                padding: 0.3rem 0.6rem;
-            }
+        @media (max-width: 768px) { 
+            header h1 { font-size: 28px; }
+            h2 { font-size: 26px; }
+            section { padding: 50px 15px; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .left::after, .right::after { left: 15px; }
+            .right { left: 0%; }
+            nav a { padding: 12px 15px; font-size: 16px; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>⚾ 早稲田ジュニア</h1>
-        <p>感謝と思いやり | 早稲田少年野球チーム</p>
+        <h1>⚾ 早稻田少年棒球队 - Waseda Junior ⚾</h1>
+        <p>感谢与体贴！一起享受棒球的乐趣吧！</p>
     </header>
-
+    
     <nav>
         <ul>
-            <li><a href="#about">チームについて</a></li>
-            <li><a href="#history">チームの歴史</a></li>
-            <li><a href="#honors">実績</a></li>
-            <li><a href="#members">選手紹介</a></li>
-            <li><a href="#recruitment">部員募集</a></li>
-            <li><a href="#contact">お問い合わせ</a></li>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#history">历史</a></li>
+            <li><a href="#honors">荣誉</a></li>
+            <li><a href="#team">队员</a></li>
+            <li><a href="#recruit">募集</a></li>
+            <li><a href="#contact">联系</a></li>
         </ul>
     </nav>
-
-    <div class="hero">
-        <h2>早稲田ジュニアへようこそ！</h2>
-        <p>感謝と思いやりの心を育む</p>
-    </div>
-
-    <div class="container">
-        <section id="about">
-            <h2>チームについて</h2>
-            <div class="history-content">
-                <h3>🎯 チームスローガン</h3>
-                <p style="font-size: 1.2rem; color: var(--waseda-maroon); font-weight: bold;">『感謝と思いやり』</p>
-                
-                <h3>📖 チームの紹介</h3>
-                <p>早稲田ジュニアは、早稲田小学校を中心とした近隣の小学生により現在35名の部員が在籍しています。練習は土・日・祝日に早稲田小学校や戸山公園子供広場を中心に新宿区や東京都のグランドも活用しながら活動しています。</p>
-                
-                <p style="margin-top: 1rem;">早稲田ジュニアのモットーは『感謝と思いやり』です。各大会での勝利をめざすと共に、野球を通し挨拶や返事の大切さ、仲間や家族等への感謝と思いやりの心を養ってほしいと願い､日々練習に取り組んでいます。</p>
-                
-                <h3>👥 チーム情報</h3>
-                <p><strong>代表者名：</strong>鈴木 孝夫</p>
-                <p><strong>登録選手数：</strong>35名</p>
-                <p><strong>募集対象：</strong>小学1～6年生、男女問わず</p>
-            </div>
-        </section>
-
-        <section id="history">
-            <h2>チームの歴史</h2>
-            <div class="history-content">
-                <h3>📅 昭和32年（1957年）4月</h3>
-                <p><strong>早稲田ジュニア設立</strong></p>
-                <p>それ以来、野球を愛する少年たちを育成し、65年以上の歴史を重ねてきました！</p>
-                
-                <p style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px; border-left: 4px solid var(--waseda-maroon);">
-                    <strong>長い伝統</strong><br>
-                    早稲田ジュニアは1957年の設立以来、「感謝と思いやり」の精神を大切にし、数多くの優秀な少年野球選手を育ててきました。技術の向上だけでなく、人格形成も重視し、感謝の心と思いやりの心を持つ立派な少年の育成を目指しています。
-                </p>
-            </div>
-        </section>
-
-        <section id="honors">
-            <h2>実績</h2>
-            <div class="honors">
-                <div class="honor-card">
-                    <h3>🏆 2023年</h3>
-                    <p>都大会準優勝</p>
-                </div>
-                <div class="honor-card">
-                    <h3>🏆 2022年</h3>
-                    <p>新宿区大会優勝</p>
-                </div>
-                <div class="honor-card">
-                    <h3>🏆 2021年</h3>
-                    <p>地区交流大会優勝</p>
-                </div>
-                <div class="honor-card">
-                    <h3>🏆 2020年</h3>
-                    <p>優秀チーム賞</p>
-                </div>
-                <div class="honor-card">
-                    <h3>🏆 2019年</h3>
-                    <p>春季大会第3位</p>
-                </div>
-                <div class="honor-card">
-                    <h3>🏆 2015年</h3>
-                    <p>新宿区大会優勝</p>
+    
+    <section id="home">
+        <h2>欢迎来到早稻田少年棒球队！</h2>
+        <p style="font-size: 18px; text-align: center; max-width: 600px; margin: 0 auto 40px;">我们是1957年成立的传统球队，以早稻田小学校为中心，培养小学生的棒球技能和价值观。来加入我们，一起挥棒击球吧！</p>
+        <img src="https://via.placeholder.com/800x400/881C28/ffffff?text=球队合照" alt="球队合照" style="width:100%; max-width:800px; display:block; margin:0 auto;">
+    </section>
+    
+    <section id="history">
+        <h2>球队历史</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1957年4月</h3>
+                    <p>球队成立！以早稻田小学校为中心，开始招募小学生队员。</p>
                 </div>
             </div>
-        </section>
-
-        <section id="members">
-            <h2>選手紹介</h2>
-            <div class="photo-gallery">
-                <div class="photo-placeholder">⚾</div>
-                <div class="photo-placeholder">👦</div>
-                <div class="photo-placeholder">👧</div>
-                <div class="photo-placeholder">🏃</div>
-                <div class="photo-placeholder">⚾</div>
-                <div class="photo-placeholder">👦</div>
-                <div class="photo-placeholder">👧</div>
-                <div class="photo-placeholder">🏃</div>
-            </div>
-            <p style="margin-top: 1rem; text-align: center; color: #666;">
-                写真をクリックすると、実際の選手の写真に差し替えることができます
-            </p>
-        </section>
-
-        <section id="recruitment">
-            <div class="recruitment">
-                <h2>部員募集中！</h2>
-                <p style="font-size: 1.2rem;">野球が好きな仲間を募集しています！</p>
-                
-                <div class="recruitment-info">
-                    <h3>📋 募集対象</h3>
-                    <ul>
-                        <li><strong>学年：</strong>小学1～6年生</li>
-                        <li><strong>性別：</strong>男女問わず</li>
-                        <li><strong>経験：</strong>野球経験は不要です。未経験者も大歓迎！</li>
-                        <li><strong>精神：</strong>チームワークを大切にし、感謝と思いやりを学ぶ意欲のある方</li>
-                    </ul>
-
-                    <h3>⏰ 練習時間</h3>
-                    <ul>
-                        <li>毎週土曜日・日曜日・祝日</li>
-                        <li>定期的に「楽しい野球体験＆親子でキャッチボール」を開催</li>
-                    </ul>
-
-                    <h3>📍 主な活動場所</h3>
-                    <ul>
-                        <li>早稲田小学校</li>
-                        <li>戸山公園子供広場</li>
-                        <li>新宿区および東京都内のグランド</li>
-                    </ul>
-
-                    <h3>🎯 育成方針</h3>
-                    <p>野球を通じて、お子様の以下の力を育みます：</p>
-                    <ul>
-                        <li>✓ 挨拶と返事の大切さ</li>
-                        <li>✓ 仲間や家族への感謝の心</li>
-                        <li>✓ 思いやりの心</li>
-                        <li>✓ チームワーク</li>
-                    </ul>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>至今</h3>
+                    <p>传承“感谢と思いやり”的精神，参与新宿区少年软式野球連盟比赛，培养无数棒球爱好者。</p>
                 </div>
-
-                <a href="#contact" class="btn">お問い合わせはこちら →</a>
-                <p style="margin-top: 1rem; font-size: 0.95rem;">体験練習も随時受付中！部員・スタッフ一同お待ちしています！</p>
             </div>
-        </section>
-
-        <section id="contact">
-            <h2>お問い合わせ</h2>
-            <div class="contact">
-                <div class="contact-info">
-                    <p>📧 <strong>メールアドレス：</strong> <a href="mailto:waseda.jr@ezweb.ne.jp">waseda.jr@ezweb.ne.jp</a></p>
-                    <p>📱 <strong>電話番号：</strong> <a href="tel:090-4918-4310">090-4918-4310</a></p>
-                    <p>📍 <strong>主な活動場所：</strong></p>
-                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                        <li>早稲田小学校</li>
-                        <li>戸山公園子供広場</li>
-                    </ul>
-                    <p style="margin-top: 1rem;">👤 <strong>代表者：</strong>鈴木 孝夫</p>
-                </div>
-                <p style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid #ddd;">
-                    保護者の方、お子様のご見学・体験練習を随時受け付けております！<br>
-                    「楽しい野球体験＆親子でキャッチボール」も定期開催中です。ぜひご参加ください！
-                </p>
+            <!-- 可以添加更多历史事件 -->
+        </div>
+    </section>
+    
+    <section id="honors">
+        <h2>球队荣誉</h2>
+        <p style="text-align: center; font-size: 18px; max-width: 600px; margin: 0 auto 40px;">我们以团队精神追求胜利！（更多荣誉待补充）</p>
+        <ul class="honors-list">
+            <li>🏆 新宿区联赛 多次入围</li>
+            <li>🥈 区域比赛 亚军（示例）</li>
+            <li>🥉 友谊赛 季军（示例）</li>
+            <!-- 添加更多荣誉 -->
+        </ul>
+    </section>
+    
+    <section id="team">
+        <h2>我们的队员</h2>
+        <p style="text-align: center; font-size: 18px; max-width: 600px; margin: 0 auto 40px;">35名小1-6年级队员，大家超级可爱！</p>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://via.placeholder.com/250x180/881C28/ffffff?text=队员1" alt="队员1">
+                <h3>小明 (小3)</h3>
+                <p>投手高手！</p>
             </div>
-        </section>
-    </div>
-
+            <div class="team-card">
+                <img src="https://via.placeholder.com/250x180/881C28/ffffff?text=队员2" alt="队员2">
+                <h3>小花 (小4)</h3>
+                <p>捕手达人！</p>
+            </div>
+            <!-- 添加更多队员卡片，替换真实照片 -->
+        </div>
+    </section>
+    
+    <section id="recruit">
+        <h2>队员募集</h2>
+        <p style="text-align: center; font-size: 18px; max-width: 600px; margin: 0 auto 40px;">小学1-6年级男生女生欢迎！来试训吧～</p>
+        <form action="https://formspree.io/f/your-form-id" method="POST"> <!-- 替换为Google Forms或Formspree -->
+            <input type="text" name="name" placeholder="你的名字" required>
+            <input type="email" name="email" placeholder="家长邮箱" required>
+            <input type="text" name="grade" placeholder="年级（小X）" required>
+            <textarea name="message" placeholder="为什么想加入？" rows="4"></textarea>
+            <button type="submit">报名！</button>
+        </form>
+        <p style="text-align: center; font-size: 16px; margin-top: 30px; opacity: 0.8;">或直接联系我们参加“快乐棒球体验”活动！</p>
+    </section>
+    
+    <section id="contact">
+        <h2>联系我们</h2>
+        <p style="text-align: center; font-size: 18px; max-width: 600px; margin: 0 auto 40px;">有问题？随时问！</p>
+        <ul class="contact-list">
+            <li>📞 电话: 090-4918-4310</li>
+            <li>✉️ 邮件: <a href="mailto:waseda.jr@ezweb.ne.jp">waseda.jr@ezweb.ne.jp</a></li>
+            <li>📍 地点: 早稲田小学校 / 戸山公園子供広場</li>
+            <li>练习: 周末及假期</li>
+        </ul>
+    </section>
+    
     <footer>
-        <p>&copy; 2024 早稲田ジュニア | 感謝と思いやり</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">1957年設立 · 感謝の心を育む · 野球の精神を受け継ぐ</p>
+        <p>&copy; 2025 早稻田少年棒球队 | 代表: 铃木 孝夫 | 新宿区少年软式野球連盟加盟</p>
     </footer>
-
+    
     <script>
-        // 平滑滚动
+        // 简单平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // 照片占位符点击提示
-        document.querySelectorAll('.photo-placeholder').forEach(placeholder => {
-            placeholder.addEventListener('click', function() {
-                alert('ここに実際の選手の写真を差し替えることができます！\n実際に使用する際は、写真をアップロードして差し替えてください。');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
