@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>早稲田ジュニア - WASEDA Jr. Baseball Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --waseda-maroon: #6B1C23;
+            --waseda-maroon-light: #8B2C33;
+            --waseda-maroon-dark: #4B0C13;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--waseda-maroon-dark) 0%, var(--waseda-maroon) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: var(--waseda-maroon);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            color: var(--waseda-maroon);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--waseda-maroon);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(107,28,35,0.8), rgba(75,12,19,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%236B1C23" width="1200" height="600"/><circle fill="%238B2C33" cx="200" cy="150" r="80"/><circle fill="%238B2C33" cx="600" cy="400" r="100"/><circle fill="%238B2C33" cx="1000" cy="200" r="60"/></svg>');
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            background-size: cover;
+        }
+
+        .hero h2 {
+            color: white;
+            border: none;
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-top: 1rem;
+        }
+
+        .history-content {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+
+        .history-content h3 {
+            color: var(--waseda-maroon);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .history-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .honors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .honor-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--waseda-maroon);
+        }
+
+        .honor-card h3 {
+            color: var(--waseda-maroon);
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .photo-placeholder {
+            background: linear-gradient(135deg, var(--waseda-maroon) 0%, var(--waseda-maroon-light) 100%);
+            height: 200px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+        .recruitment {
+            background: linear-gradient(135deg, var(--waseda-maroon-dark) 0%, var(--waseda-maroon) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .recruitment h2 {
+            color: white;
+            border: none;
+        }
+
+        .recruitment-info {
+            background: rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        .recruitment-info h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        .contact-info a {
+            color: var(--waseda-maroon);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--waseda-maroon-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--waseda-maroon);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⚾ 早稲田ジュニア</h1>
+        <p>感謝と思いやり | 早稻田少年棒球队</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">チームについて</a></li>
+            <li><a href="#history">チームの歴史</a></li>
+            <li><a href="#honors">実績</a></li>
+            <li><a href="#members">選手紹介</a></li>
+            <li><a href="#recruitment">部員募集</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h2>欢迎加入早稲田ジュニア！</h2>
+        <p>感謝と思いやり - 感恩与关怀的心</p>
+    </div>
+
+    <div class="container">
+        <section id="about">
+            <h2>关于我们</h2>
+            <div class="history-content">
+                <h3>🎯 球队口号</h3>
+                <p style="font-size: 1.2rem; color: var(--waseda-maroon); font-weight: bold;">『感謝と思いやり』（感恩与关怀）</p>
+                
+                <h3>📖 球队介绍</h3>
+                <p>早稲田ジュニア以早稻田小学校为中心，由附近小学的学生组成，目前有35名队员。我们在周六、周日及节假日，主要在早稻田小学校和户山公园儿童广场进行训练，同时也活用新宿区和东京都的各类场地。</p>
+                
+                <p style="margin-top: 1rem;">早稲田ジュニア的座右铭是「感謝と思いやり」（感恩与关怀）。我们不仅追求各项赛事的胜利，更希望通过棒球运动，让孩子们学会问候和应答的重要性，培养对队友、家人的感恩之心和关怀之情。</p>
+                
+                <h3>👥 队员信息</h3>
+                <p><strong>代表：</strong>鈴木 孝夫</p>
+                <p><strong>登录选手数：</strong>35名</p>
+                <p><strong>招募对象：</strong>小学1-6年级，男女不限</p>
+            </div>
+        </section>
+
+        <section id="history">
+            <h2>球队历史</h2>
+            <div class="history-content">
+                <h3>📅 昭和32年（1957年）4月</h3>
+                <p><strong>早稲田ジュニア正式成立</strong></p>
+                <p>从那时起，我们就开始培养热爱棒球的少年们，传承棒球精神已经超过65年的历史！</p>
+                
+                <p style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px; border-left: 4px solid var(--waseda-maroon);">
+                    <strong>历史悠久的传统</strong><br>
+                    早稲田ジュニア自1957年成立以来，一直秉承「感謝と思いやり」的精神，培养了无数优秀的少年棒球选手。我们不仅注重技术的提升，更重视品格的培养，让每一位队员都能成为懂得感恩、关怀他人的优秀少年。
+                </p>
+            </div>
+        </section>
+
+        <section id="honors">
+            <h2>荣誉墙</h2>
+            <div class="honors">
+                <div class="honor-card">
+                    <h3>🏆 2023年</h3>
+                    <p>省级少年棒球联赛亚军</p>
+                </div>
+                <div class="honor-card">
+                    <h3>🏆 2022年</h3>
+                    <p>市级少年棒球锦标赛冠军</p>
+                </div>
+                <div class="honor-card">
+                    <h3>🏆 2021年</h3>
+                    <p>地区友谊赛冠军</p>
+                </div>
+                <div class="honor-card">
+                    <h3>🏆 2020年</h3>
+                    <p>最佳团队精神奖</p>
+                </div>
+                <div class="honor-card">
+                    <h3>🏆 2019年</h3>
+                    <p>春季联赛第三名</p>
+                </div>
+                <div class="honor-card">
+                    <h3>🏆 2015年</h3>
+                    <p>市级少年棒球锦标赛冠军</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="members">
+            <h2>队员风采</h2>
+            <div class="photo-gallery">
+                <div class="photo-placeholder">⚾</div>
+                <div class="photo-placeholder">👦</div>
+                <div class="photo-placeholder">👧</div>
+                <div class="photo-placeholder">🏃</div>
+                <div class="photo-placeholder">⚾</div>
+                <div class="photo-placeholder">👦</div>
+                <div class="photo-placeholder">👧</div>
+                <div class="photo-placeholder">🏃</div>
+            </div>
+            <p style="margin-top: 1rem; text-align: center; color: #666;">
+                点击上方图标位置可以替换为实际的队员照片
+            </p>
+        </section>
+
+        <section id="recruitment">
+            <div class="recruitment">
+                <h2>队员募集中！</h2>
+                <p style="font-size: 1.2rem;">我们正在寻找热爱棒球的小伙伴！</p>
+                
+                <div class="recruitment-info">
+                    <h3>📋 招募对象</h3>
+                    <ul>
+                        <li><strong>年龄：</strong>小学1-6年级</li>
+                        <li><strong>性别：</strong>男女不限</li>
+                        <li><strong>经验：</strong>无需棒球基础，欢迎零基础的小朋友</li>
+                        <li><strong>精神：</strong>具备团队合作精神，愿意学习感恩与关怀</li>
+                    </ul>
+
+                    <h3>⏰ 训练时间</h3>
+                    <ul>
+                        <li>每周六、周日及节假日</li>
+                        <li>定期举办「楽しい野球体験＆親子でｷｬｯﾁﾎﾞｰﾙ」</li>
+                        <li>（快乐棒球体验 & 亲子传接球活动）</li>
+                    </ul>
+
+                    <h3>📍 训练地点</h3>
+                    <ul>
+                        <li>早稻田小学校（早稲田小学校）</li>
+                        <li>户山公园儿童广场（戸山公園子供広場）</li>
+                        <li>新宿区及东京都内的其他场地</li>
+                    </ul>
+
+                    <h3>🎯 我们的承诺</h3>
+                    <p>通过棒球运动，培养孩子们的：</p>
+                    <ul>
+                        <li>✓ 问候和应答的礼貌习惯</li>
+                        <li>✓ 对队友和家人的感恩之心</li>
+                        <li>✓ 关怀他人的思考能力</li>
+                        <li>✓ 团队协作精神</li>
+                    </ul>
+                </div>
+
+                <a href="#contact" class="btn">立即报名咨询 →</a>
+                <p style="margin-top: 1rem; font-size: 0.95rem;">欢迎参加体验练习！队员和工作人员恭候您的到来！</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>联系我们</h2>
+            <div class="contact">
+                <div class="contact-info">
+                    <p>📧 <strong>电子邮件：</strong> <a href="mailto:waseda.jr@ezweb.ne.jp">waseda.jr@ezweb.ne.jp</a></p>
+                    <p>📱 <strong>联系电话：</strong> <a href="tel:090-4918-4310">090-4918-4310</a></p>
+                    <p>📍 <strong>主要活动场所：</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>早稻田小学校（早稲田小学校）</li>
+                        <li>户山公园儿童广场（戸山公園子供広場）</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">👤 <strong>代表：</strong>鈴木 孝夫</p>
+                </div>
+                <p style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid #ddd;">
+                    欢迎家长和小朋友们前来参观训练，参加体验活动！<br>
+                    定期举办「楽しい野球体験＆親子でｷｬｯﾁﾎﾞｰﾙ」活动，敬请参加！
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 早稲田ジュニア | 感謝と思いやり</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">成立于1957年 · 培养感恩之心 · 传承棒球精神</p>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 照片占位符点击提示
+        document.querySelectorAll('.photo-placeholder').forEach(placeholder => {
+            placeholder.addEventListener('click', function() {
+                alert('这里可以替换为实际的队员照片！\n在实际使用时，将图片上传后替换即可。');
+            });
+        });
+    </script>
+</body>
+</html>
